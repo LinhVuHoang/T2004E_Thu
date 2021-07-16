@@ -1,0 +1,60 @@
+﻿@model T2004E_Thu.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Actor.NameA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actor.NameA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Add To Cart", "AddToCart", new { id = Model.Id, qty = 1 })
+    @Html.ActionLink("Back to List", "Index")
+</p>

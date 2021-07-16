@@ -1,0 +1,73 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Index</h2>
+@{ Html.BeginForm("Index", "Book", FormMethod.Get);}
+@Html.TextBox("search")
+<select name="actorId" class="form-control">
+    <option value="">Select Actor</option>
+    @foreach (T2004E_Thu.Models.Actor item in Model.Actors)
+    {
+        <option @(ViewBag.ActorId == item.Id ? "selected" : "") value="@item.Id">@item.NameA</option>
+    }
+</select>
+<button type="submit">Search</button>
+@{ Html.EndForm();}
+<p>
+    @Html.ActionLink("Sort by NameP ASC", "Index", new { sortOrder = "asc" })
+    @Html.ActionLink("Sort by NameP DESC", "Index", new { sortOrder = "desc" })
+</p>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           NameA
+        </th>
+        <th>
+            NameB
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Description
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (T2004E_Thu.Models.Book item in Model.Books)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actor.NameA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameB)
+            </td>
+            <td>
+                <img src="~/@item.Image" height="50" width="50"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
